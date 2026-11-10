@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PATHLINE: One line. Every square.</title>
+<meta name="description" content="PATHLINE is a calm, minimalist logic puzzle. Draw one line through every square, visiting the numbers in order.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='2' y='2' width='44' height='44' rx='12' fill='%23202124'/%3E%3Cpath d='M14 14H34V24H14V34H34' stroke='%234778F5' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='14' cy='14' r='4.5' fill='%23fff'/%3E%3Ccircle cx='34' cy='34' r='4.5' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #F7F7F2; --surface: #FFFFFF; --text: #202124; --muted: #6B6F75;
+    --accent: #4778F5; --border: #E4E4DC; --node: #202124; --grid: #E6E6DF;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #16171A; --surface: #202226; --text: #ECECE7; --muted: #9AA0A6;
+            --accent: #6B93FF; --border: #2F3237; --node: #ECECE7; --grid: #30333A; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 56px 20px 40px; }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .brand h1 { margin: 0; font-size: 30px; font-weight: 800; letter-spacing: 6px; }
+  .tagline { color: var(--muted); font-weight: 600; letter-spacing: 2px; font-size: 13px; text-transform: uppercase; margin: 10px 0 0; }
+  .hero { margin-top: 40px; display: grid; gap: 32px; align-items: center; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .hero { grid-template-columns: 1.1fr 1fr; } }
+  .hero h2 { font-size: 34px; line-height: 1.15; margin: 0 0 14px; letter-spacing: -0.6px; }
+  .hero p { margin: 0 0 22px; color: var(--muted); }
+  .badge {
+    display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px;
+    background: var(--text); color: var(--bg); font-weight: 700; text-decoration: none;
+  }
+  .board { width: 100%; max-width: 300px; justify-self: center; }
+  .board svg { width: 100%; height: auto; display: block; }
+  .b-bg { fill: var(--surface); stroke: var(--border); }
+  .b-grid { fill: none; stroke: var(--grid); stroke-width: 1.5; }
+  .b-line { fill: none; stroke: var(--accent); stroke-width: 20; stroke-linecap: round; stroke-linejoin: round; }
+  .b-nodes circle { fill: var(--node); }
+  .b-nodes text { fill: var(--bg); font-weight: 800; font-size: 20px; text-anchor: middle; font-family: inherit; }
+  .features { margin-top: 48px; display: grid; gap: 12px; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .features { grid-template-columns: repeat(3, 1fr); } }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 18px; }
+  .card h3 { margin: 0 0 6px; font-size: 17px; }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; }
+  footer {
+    max-width: 720px; margin: 0 auto; padding: 24px 20px 48px; color: var(--muted); font-size: 14px;
+    border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand">
+    <svg width="44" height="44" viewBox="0 0 48 48" aria-hidden="true">
+      <rect x="2" y="2" width="44" height="44" rx="12" fill="#202124"/>
+      <path d="M14 14H34V24H14V34H34" stroke="#4778F5" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="14" cy="14" r="4.5" fill="#fff"/><circle cx="34" cy="34" r="4.5" fill="#fff"/>
+    </svg>
+    <h1>PATHLINE</h1>
+  </div>
+  <p class="tagline">One line · Every square</p>
+
+  <section class="hero">
+    <div>
+      <h2>A calm logic puzzle you can learn in seconds.</h2>
+      <p>Draw one continuous line from 1, visit the numbers in order, and pass through every square exactly once. Easy to start, satisfying to master.</p>
+      <span class="badge">Coming soon to Google Play</span>
+    </div>
+    <div class="board" aria-label="Example PATHLINE puzzle">
+      <svg viewBox="0 0 240 240">
+        <rect class="b-bg" width="240" height="240" rx="22"/>
+        <path class="b-grid" d="M20 20h200v200H20zM70 20v200M120 20v200M170 20v200M20 70h200M20 120h200M20 170h200"/>
+        <path class="b-line" d="M45 45H195V95H45V145H195V195H45"/>
+        <g class="b-nodes">
+          <circle cx="45" cy="45" r="16"/><text x="45" y="52">1</text>
+          <circle cx="195" cy="95" r="16"/><text x="195" y="102">2</text>
+          <circle cx="45" cy="145" r="16"/><text x="45" y="152">3</text>
+          <circle cx="45" cy="195" r="16"/><text x="45" y="202">4</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="card"><h3>100 handcrafted levels</h3><p>Ten worlds that ramp from first steps to expert boards. Every puzzle has exactly one solution.</p></div>
+    <div class="card"><h3>Daily challenge</h3><p>A fresh puzzle every day, the same for everyone. Build your streak.</p></div>
+    <div class="card"><h3>Play anywhere</h3><p>Works fully offline. No account, no sign-up. Your progress stays on your device.</p></div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 PATHLINE</span>
+  <span>
+    <a href="privacy-policy.html">Privacy policy</a>
+  </span>
+</footer>
+</body>
+</html>
